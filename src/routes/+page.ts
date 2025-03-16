@@ -6,7 +6,7 @@ export const load = async ({ fetch }) => {
     try {
         return fetch(specLocation)
             .then(response => response.text())
-            .then(specText => parse(specText));
+            .then(specText => { return { spec: parse(specText), text: specText }; });
     }
     catch(e: unknown) {
         return error(500, (e as Error).message);

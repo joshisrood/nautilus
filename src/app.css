@@ -1,1 +1,115 @@
 @import "tailwindcss";
+
+@layer base {
+/*Dev Defaults --REMOVE LATER-- */
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "avenir next", avenir, helvetica, "helvetica neue", ubuntu, roboto, noto, "segoe ui", arial, sans-serif;
+  }
+  
+  h1, h2 { font-size: 16px; }
+  
+  header {
+    margin-bottom: 1em;
+  }
+  
+  @media print { header { display: none; } }
+  
+  header > span {
+    vertical-align: top;
+    margin-right: 1em;
+  }
+  
+  details {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+  }
+  
+  details > div {
+    position: absolute;
+    min-width: 200px;
+    margin-top: 0.5em;
+    padding: 0.5em;
+    background-color: white;
+    border: 1px solid #ccc;
+  }
+  
+  details > div > div:not(:last-child) {
+    margin-bottom: 0.5em;
+  }
+  
+  .input {
+    margin-right: 1em;
+  }
+  
+  .input > * {
+    vertical-align: middle;
+  }
+  
+  .input label:first-of-type {
+    margin-right: 0.5em;
+  }
+  
+  .input label.value {
+    display: inline-block;
+    min-width: 40px;
+  }
+  
+  .input input[type="range"] {
+    margin-right: 0.5em;
+  }
+  
+  table {
+    position: relative;
+    table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-variant-numeric: tabular-nums;
+    box-sizing: border-box;
+    max-width: initial;
+    min-height: 33px;
+    margin: 0;
+    width: 100%;
+  
+    font-size: 13px;
+    line-height: 15.6px;
+  }
+  
+  thead tr th {
+    position: sticky;
+    top: 0;
+    background: #fff;
+    cursor: ns-resize;
+    border-bottom: solid 1px #ccc;
+  }
+  
+  tbody tr:hover {
+    background: #eef;
+  }
+  
+  th {
+    color: #111;
+    text-align: left;
+    vertical-align: bottom;
+  }
+  
+  td, th {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding: 3px 6.5px 3px 0;
+  }
+  
+  tbody tr:first-child td {
+    padding-top: 4px;
+  }
+  
+  td, tr:not(:last-child) th {
+    border-bottom: solid 1px #eee;
+  }
+  
+  td {
+    color: #444;
+    vertical-align: top;
+  }
+}
