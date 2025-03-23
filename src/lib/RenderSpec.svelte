@@ -5,6 +5,7 @@
     import { parse } from 'yaml';
 
     let { yamlSpec, context } = $props();
+    let spec: Spec = $derived(parse(yamlSpec));
     let renderedHtml: HTMLElement | SVGSVGElement | undefined = $state();
     let vgContainer: HTMLElement;
 
@@ -26,14 +27,15 @@
 
     onMount(() => {
         $effect(() => {
-            const spec = parse(yamlSpec);
-            renderComponent(vgContainer, spec as Spec);
+            renderComponent(vgContainer, spec);
         });
     });
 </script>
 
-<div class="vg-container border border-gray-600 rounded p-4" bind:this={vgContainer}>
-    ...Initializing
+<div class="vg-container p-4 bg-white rounded-sm" bind:this={vgContainer}>
+    <div class="text-slate-800 flex justify-center align-middle">
+        ...Initializing
+    </div>
 </div>
 
 

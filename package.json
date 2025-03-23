@@ -17,6 +17,12 @@
     "@tauri-apps/plugin-opener": "^2.2.6"
   },
   "devDependencies": {
+    "@codemirror/commands": "^6.8.0",
+    "@codemirror/lang-yaml": "^6.1.2",
+    "@codemirror/language": "^6.11.0",
+    "@codemirror/state": "^6.5.2",
+    "@codemirror/view": "^6.36.4",
+    "@rich_harris/svelte-split-pane": "^2.0.0",
     "@sveltejs/adapter-static": "^3.0.8",
     "@sveltejs/kit": "^2.19.0",
     "@sveltejs/vite-plugin-svelte": "^5.0.3",

@@ -4,6 +4,7 @@
 /*Dev Defaults --REMOVE LATER-- */
   body {
     font-family: -apple-system, BlinkMacSystemFont, "avenir next", avenir, helvetica, "helvetica neue", ubuntu, roboto, noto, "segoe ui", arial, sans-serif;
+    @apply bg-slate-700
   }
   
   h1, h2 { font-size: 16px; }
@@ -111,5 +112,13 @@
   td {
     color: #444;
     vertical-align: top;
+  }
+
+  .cm-editor {
+    @apply w-full h-full
+  }
+
+  .cm-gutters, .cm-scroller {
+    @apply rounded-l-sm
   }
 }
