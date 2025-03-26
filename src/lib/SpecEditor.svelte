@@ -42,7 +42,9 @@
             dispatchTransactions(trs: readonly Transaction[], view: EditorView) {
                 view.update(trs);
 
-                onSpecChange(view.state.doc.toString());
+                if(trs.some(tr => tr.docChanged)) {
+                    onSpecChange(view.state.doc.toString());
+                }
             },
 		});
     });

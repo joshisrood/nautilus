@@ -3,17 +3,25 @@
   import { createAPIContext, wasmConnector } from '@uwdata/vgplot';
   import RenderSpec from '$lib/RenderSpec.svelte';
   import SpecEditor from '$lib/SpecEditor.svelte';
-  import { onMount } from 'svelte';
+  import { debounce } from '$lib/utils/debounce';
   
   const context = createAPIContext();
   const wasm = wasmConnector();
   context.coordinator().databaseConnector(wasm);
 
   let { data } = $props();
-  let yamlSpec = $derived(data.text);
+  let yamlSpec = $state(data.text);
+
+  let debouncingUpdate = $state(false);
+
+  const deboucedUpdateSpec = debounce((updatedSpec: string) => {
+      yamlSpec = updatedSpec;
+      debouncingUpdate = false;
+  }, 1000);
 
   function onSpecChange(updatedSpec: string) {
-    console.log('updatedSpec', updatedSpec);
+    debouncingUpdate = true;
+    deboucedUpdateSpec(updatedSpec);
   }
 
 </script>
