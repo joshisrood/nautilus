@@ -1,13 +1,19 @@
 <script lang="ts">
+    import { onMount } from 'svelte';
     import { EditorView, keymap, highlightSpecialChars, drawSelection, 
             lineNumbers, highlightActiveLineGutter 
         } from '@codemirror/view';
-    import { EditorState } from '@codemirror/state';
+    import { EditorState, Transaction } from '@codemirror/state';
     import { defaultKeymap, historyKeymap, history } from '@codemirror/commands';
     import { defaultHighlightStyle, syntaxHighlighting } from '@codemirror/language';
     import { yaml } from '@codemirror/lang-yaml';
 
-    let { yamlSpec } = $props();
+    interface SpecEditorProps {
+        yamlSpec: string;
+        onSpecChange?: (updatedSpec: string) => void
+    }
+
+    let { yamlSpec, onSpecChange = (updatedSpec) => {}}: SpecEditorProps = $props();
 
     let container: HTMLDivElement;
     let editor_view: EditorView;
@@ -29,10 +35,15 @@
         ]
     });
 
-    $effect(() => {
+    onMount(() => {
         editor_view = new EditorView({
 			parent: container,
-            state: startState
+            state: startState,
+            dispatchTransactions(trs: readonly Transaction[], view: EditorView) {
+                view.update(trs);
+
+                onSpecChange(view.state.doc.toString());
+            },
 		});
     });
 </script>
