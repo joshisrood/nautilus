@@ -50,6 +50,6 @@
     });
 </script>
 
-<div class="h-full w-full bg-white rounded-sm" bind:this={container}>
+<div class="bg-white h-full rounded-sm" bind:this={container}>
 </div>
 
