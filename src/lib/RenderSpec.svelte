@@ -5,7 +5,7 @@
     import { parse } from 'yaml';
 
     let { yamlSpec, context } = $props();
-    let spec: Spec = $derived(parse(yamlSpec));
+    let spec: Spec | null = $derived(parse(yamlSpec));
     let renderedHtml: HTMLElement | SVGSVGElement | undefined = $state();
     let vgContainer: HTMLElement;
 
@@ -27,7 +27,9 @@
 
     onMount(() => {
         $effect(() => {
-            renderComponent(vgContainer, spec);
+            if(spec) {
+                renderComponent(vgContainer, spec);
+            }
         });
     });
 </script>

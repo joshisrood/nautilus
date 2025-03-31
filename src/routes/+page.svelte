@@ -12,9 +12,11 @@
   context.coordinator().databaseConnector(wasm);
 
   let { data } = $props();
-  let yamlSpec = $state(data.text);
+  let yamlSpec = $state("");
 
   let debouncingUpdate = $state(false);
+
+  let importFiles: FileList | null | undefined = $state();
 
   const deboucedUpdateSpec = debounce((updatedSpec: string) => {
       yamlSpec = updatedSpec;
@@ -26,6 +28,22 @@
     deboucedUpdateSpec(updatedSpec);
   }
 
+  $effect(() => {
+    if(importFiles && importFiles.length > 0) {
+      const importFile = importFiles[0];
+      if(importFile.type === "application/x-yaml") {
+        const fileReader = new FileReader();
+        fileReader.onload = () => {
+          if(typeof fileReader.result === "string") {
+            yamlSpec = fileReader.result;
+          }
+        };
+
+        fileReader.readAsText(importFile);
+      }
+    }
+  })
+
 </script>
 
 <div class="flex flex-col p-2 fixed top-0 left-0 w-full h-full">
@@ -33,6 +51,9 @@
     <div class="mb-2">
       <nav class="p-2 bg-white w-full flex-none flex flex-row rounded-sm">
         <div class="pe-1 border-e-1">Nautilus</div>
+        <div class="ms-1 px-1">
+          <input type="file" accept=".yml,.yaml" name="file-import" bind:files={importFiles} />
+        </div>
       </nav>
     </div>
   {/if}

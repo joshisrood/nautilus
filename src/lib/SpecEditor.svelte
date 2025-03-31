@@ -48,6 +48,12 @@
             },
 		});
     });
+
+    $effect(() => {
+        editor_view.dispatch({
+            changes: {from: 0, to: editor_view.state.doc.length, insert: yamlSpec}
+        })
+    })
 </script>
 
 <div class="bg-white h-full rounded-sm" bind:this={container}>
