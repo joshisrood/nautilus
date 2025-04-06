@@ -1,16 +1,20 @@
 <script lang="ts">
-    import { parseSpec, astToDOM } from '@uwdata/mosaic-spec';
+    import { parseSpec, astToDOM, SpecNode } from '@uwdata/mosaic-spec';
     import { type Spec, DataNode, FileDataNode } from '@uwdata/mosaic-spec';
     import { onMount } from 'svelte';
     import { parse } from 'yaml';
+    import type { SpecManager } from './SpecManager.svelte';
 
-    let { yamlSpec, context } = $props();
-    let spec: Spec | null = $derived(parse(yamlSpec));
+    interface RenderSpecProps {
+        specManager: SpecManager;
+        context: any;
+    }
+
+    let { specManager, context }: RenderSpecProps = $props();
     let renderedHtml: HTMLElement | SVGSVGElement | undefined = $state();
     let vgContainer: HTMLElement;
 
-    async function renderComponent(targetContainer: HTMLElement, spec: Spec) {
-        const ast = parseSpec(spec);
+    async function renderComponent(targetContainer: HTMLElement, ast: SpecNode) {
 
         for(const dataKey in ast.data) {
             const datasetNode: DataNode = ast.data[dataKey];
@@ -27,11 +31,13 @@
 
     onMount(() => {
         $effect(() => {
-            if(spec) {
-                renderComponent(vgContainer, spec);
+            if(specManager.specAST) {
+                renderComponent(vgContainer, specManager.specAST);
             }
         });
     });
+
+    
 </script>
 
 <div class="vg-container p-4 bg-white rounded-sm" bind:this={vgContainer}>

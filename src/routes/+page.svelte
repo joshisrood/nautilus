@@ -1,32 +1,22 @@
 <script lang="ts">
-  import { PUBLIC_ENV_PLATFORM } from '$env/static/public';
+  import { PUBLIC_ENV_PLATFORM, PUBLIC_ENV_MODE } from '$env/static/public';
 
   import { SplitPane } from '@rich_harris/svelte-split-pane';
   import { createAPIContext, wasmConnector } from '@uwdata/vgplot';
   import RenderSpec from '$lib/RenderSpec.svelte';
   import SpecEditor from '$lib/SpecEditor.svelte';
-  import { debounce } from '$lib/utils/debounce';
+  import { SpecManager } from '$lib/SpecManager.svelte';
   
   const context = createAPIContext();
   const wasm = wasmConnector();
   context.coordinator().databaseConnector(wasm);
 
   let { data } = $props();
-  let yamlSpec = $state("");
 
-  let debouncingUpdate = $state(false);
+  let specManager: SpecManager = $state(new SpecManager(""));
 
   let importFiles: FileList | null | undefined = $state();
-
-  const deboucedUpdateSpec = debounce((updatedSpec: string) => {
-      yamlSpec = updatedSpec;
-      debouncingUpdate = false;
-  }, 1000);
-
-  function onSpecChange(updatedSpec: string) {
-    debouncingUpdate = true;
-    deboucedUpdateSpec(updatedSpec);
-  }
+  let importInput: HTMLInputElement | undefined = $state();
 
   $effect(() => {
     if(importFiles && importFiles.length > 0) {
@@ -35,25 +25,43 @@
         const fileReader = new FileReader();
         fileReader.onload = () => {
           if(typeof fileReader.result === "string") {
-            yamlSpec = fileReader.result;
+            specManager.loadYaml(fileReader.result);
+          }
+
+          if(importInput) {
+            importInput.value = "";
           }
         };
 
         fileReader.readAsText(importFile);
+
       }
     }
-  })
+  });
 
+  function downloadSpec() {
+    const yaml = specManager.exportNormalizedYaml();
+  }
 </script>
 
 <div class="flex flex-col p-2 fixed top-0 left-0 w-full h-full">
-  {#if PUBLIC_ENV_PLATFORM == "Web"}
+  {#if PUBLIC_ENV_PLATFORM == "web"}
     <div class="mb-2">
       <nav class="p-2 bg-white w-full flex-none flex flex-row rounded-sm">
         <div class="pe-1 border-e-1">Nautilus</div>
         <div class="ms-1 px-1">
-          <input type="file" accept=".yml,.yaml" name="file-import" bind:files={importFiles} />
+          <label for="file-import" class="flex bg-slate-200 px-1 rounded-sm cursor-pointer">
+            <span>Import Spec</span>
+            <input type="file" accept=".yml,.yaml" id="file-import" name="file-import" bind:this={importInput} bind:files={importFiles} hidden/>
+          </label>
         </div>
+        {#if PUBLIC_ENV_MODE == "playground"}
+          <div class="px-1">
+            <button type="button" onclick={downloadSpec} class="bg-slate-200 px-1 rounded-sm cursor-pointer">
+              Download
+            </button>
+          </div>
+        {/if}
       </nav>
     </div>
   {/if}
@@ -61,12 +69,12 @@
     <SplitPane id="editor-split" type="horizontal" min="400px" max="-400px" pos="40%">
       {#snippet a()}
         <div class="pe-1 w-full h-full">
-          <SpecEditor {yamlSpec} {onSpecChange} />
+          <SpecEditor {specManager} />
         </div>
       {/snippet}
       {#snippet b()}
         <div class="ps-1 w-full h-full">
-          <RenderSpec {context} {yamlSpec} />
+          <RenderSpec {context} {specManager} />
         </div>
       {/snippet}
     </SplitPane>

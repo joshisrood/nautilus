@@ -7,19 +7,19 @@
     import { defaultKeymap, historyKeymap, history } from '@codemirror/commands';
     import { defaultHighlightStyle, syntaxHighlighting } from '@codemirror/language';
     import { yaml } from '@codemirror/lang-yaml';
+    import type { SpecManager } from './SpecManager.svelte';
 
     interface SpecEditorProps {
-        yamlSpec: string;
-        onSpecChange?: (updatedSpec: string) => void
+        specManager: SpecManager;
     }
 
-    let { yamlSpec, onSpecChange = (updatedSpec) => {}}: SpecEditorProps = $props();
+    let { specManager }: SpecEditorProps = $props();
 
     let container: HTMLDivElement;
     let editor_view: EditorView;
 
     let startState = EditorState.create({
-        doc: yamlSpec,
+        doc: specManager.yamlSpec,
         extensions: [
             lineNumbers(),
             highlightActiveLineGutter(),
@@ -43,7 +43,7 @@
                 view.update(trs);
 
                 if(trs.some(tr => tr.docChanged)) {
-                    onSpecChange(view.state.doc.toString());
+                    specManager.debouncingUpdateYaml(view.state.doc.toString());
                 }
             },
 		});
@@ -51,9 +51,10 @@
 
     $effect(() => {
         editor_view.dispatch({
-            changes: {from: 0, to: editor_view.state.doc.length, insert: yamlSpec}
-        })
+            changes: { from: 0, to: editor_view.state.doc.length, insert: specManager.loadedYaml }
+        });
     })
+
 </script>
 
 <div class="bg-white h-full rounded-sm" bind:this={container}>
