@@ -17,14 +17,6 @@
     let vgContainer: HTMLElement;
 
     async function renderComponent(targetContainer: HTMLElement, ast: SpecNode) {
-
-        for(const dataKey in ast.data) {
-            const datasetNode: DataNode = ast.data[dataKey];
-            if(datasetNode instanceof FileDataNode) {
-                datasetNode.file = window.location + datasetNode.file;
-            }
-        }
-
         const domPromise = await astToDOM(ast, { api: context });
         renderedHtml = domPromise.element;
         targetContainer.innerHTML = "";

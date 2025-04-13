@@ -30,7 +30,7 @@ meta:
     Nora McNamara-Bordewick. Data from the
     [UW Institute for Protein Design](https://www.ipd.uw.edu/).
 data:
-  proteins: { file: data/protein-design.parquet }
+  proteins: { file: https://idl.uw.edu/mosaic/data/protein-design.parquet }
 params:
   query: { select: crossfilter }
   point: { select: intersect, empty: true }
