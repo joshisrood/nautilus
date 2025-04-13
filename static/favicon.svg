@@ -1,0 +1,16 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_7_48)">
+<ellipse cx="98.9504" cy="267.275" rx="82.9504" ry="82.9505" fill="white" stroke="black" stroke-width="5" stroke-linejoin="round"/>
+<rect x="99.5234" y="184.324" width="297.477" height="165.901" fill="white" stroke="black" stroke-width="5" stroke-linejoin="round"/>
+<path d="M415.696 273.138C412.472 270.347 412.472 265.347 415.696 262.555L483.814 203.563C488.347 199.637 495.396 202.857 495.396 208.855V326.839C495.396 332.836 488.347 336.056 483.814 332.13L415.696 273.138Z" fill="white" stroke="black" stroke-width="5" stroke-linejoin="round"/>
+<path d="M486.242 267.275L396.999 350.011V184.538L486.242 267.275Z" fill="white" stroke="black" stroke-width="5" stroke-linejoin="round"/>
+<path d="M185.336 150L205.153 184.324H165.519L185.336 150Z" fill="white" stroke="black" stroke-width="5" stroke-linejoin="round"/>
+<rect x="185.336" y="150" width="62.9279" height="34.3243" fill="white" stroke="black" stroke-width="5" stroke-linejoin="round"/>
+<path d="M248.262 150L258.17 184.324H238.353L248.262 150Z" fill="white" stroke="black" stroke-width="5" stroke-linejoin="round"/>
+</g>
+<defs>
+<clipPath id="clip0_7_48">
+<rect width="512" height="512" fill="white"/>
+</clipPath>
+</defs>
+</svg>

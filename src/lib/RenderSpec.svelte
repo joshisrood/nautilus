@@ -10,6 +10,8 @@
         context: any;
     }
 
+    let mounted: boolean = $state(false);
+
     let { specManager, context }: RenderSpecProps = $props();
     let renderedHtml: HTMLElement | SVGSVGElement | undefined = $state();
     let vgContainer: HTMLElement;
@@ -35,15 +37,22 @@
                 renderComponent(vgContainer, specManager.specAST);
             }
         });
+        mounted = true;
     });
 
     
 </script>
 
 <div class="vg-container p-4 bg-white rounded-sm" bind:this={vgContainer}>
-    <div class="text-slate-800 flex justify-center align-middle">
-        ...Initializing
-    </div>
+    {#if !mounted}
+        <div class="text-slate-800 flex justify-center align-middle">
+            ...Initializing
+        </div>
+    {:else if !renderedHtml}
+        <div class="text-slate-400 flex justify-center align-middle">
+            Nothing to render
+        </div>
+    {/if}
 </div>
 
 

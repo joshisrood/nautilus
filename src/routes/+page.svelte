@@ -41,23 +41,32 @@
 
   function downloadSpec() {
     const yaml = specManager.exportNormalizedYaml();
+
+    const downloadLink = document.createElement("a");
+    const specFile = new Blob([yaml], { type: "application/x-yaml"});
+    downloadLink.href = URL.createObjectURL(specFile);
+    downloadLink.download = "mosaic-spec.yaml";
+    downloadLink.click();
+    URL.revokeObjectURL(downloadLink.href);
   }
 </script>
 
 <div class="flex flex-col p-2 fixed top-0 left-0 w-full h-full">
   {#if PUBLIC_ENV_PLATFORM == "web"}
     <div class="mb-2">
-      <nav class="p-2 bg-white w-full flex-none flex flex-row rounded-sm">
-        <div class="pe-1 border-e-1">Nautilus</div>
-        <div class="ms-1 px-1">
-          <label for="file-import" class="flex bg-slate-200 px-1 rounded-sm cursor-pointer">
+      <nav class="p-2 bg-white w-full flex-none flex flex-row items-center rounded-sm">
+        <div class="pe-1 grow">
+          <img class="h-7" src="/assets/base-icon.svg" alt="Nautilus" />
+        </div>
+        <div class="px-1">
+          <label for="file-import" class="flex bg-slate-200 py-1 px-2 rounded-sm cursor-pointer">
             <span>Import Spec</span>
             <input type="file" accept=".yml,.yaml" id="file-import" name="file-import" bind:this={importInput} bind:files={importFiles} hidden/>
           </label>
         </div>
         {#if PUBLIC_ENV_MODE == "playground"}
           <div class="px-1">
-            <button type="button" onclick={downloadSpec} class="bg-slate-200 px-1 rounded-sm cursor-pointer">
+            <button type="button" onclick={downloadSpec} class="bg-slate-200 py-1 px-2 rounded-sm cursor-pointer">
               Download
             </button>
           </div>
