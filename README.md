@@ -1,7 +1,10 @@
-# Tauri + SvelteKit + TypeScript
+# Nautilus: A tool for developing interactive data visualization, built on top of Mosaic
 
-This template should help get you started developing with Tauri, SvelteKit and TypeScript in Vite.
+Natuilus is a platform for creating and editing interactive data visualization built on top
+of [Mosaic](https://github.com/uwdata/mosaic). In its current form, it provides a YAML 
+playground editor and preview for Mosaic Spec.
 
-## Recommended IDE Setup
+## Resources
 
-[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer).
+To learn more about Mosaic Spec, visit the 
+[Mosaic documentation page for Mosaic Spec](https://idl.uw.edu/mosaic/spec/).
