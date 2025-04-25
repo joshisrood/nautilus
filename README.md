@@ -4,6 +4,10 @@ Natuilus is a platform for creating and editing interactive data visualization b
 of [Mosaic](https://idl.uw.edu/mosaic/). In its current form, it provides a YAML 
 playground editor and preview for Mosaic Spec.
 
+Playground available at [https://joshisrood.github.io/nautilus/](https://joshisrood.github.io/nautilus/)
+
+![Screen shot of the Natilus Playground interface](nautilus_playground.png)
+
 ## Resources
 
 To learn more about Mosaic Spec, visit the 
