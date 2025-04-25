@@ -56,7 +56,7 @@
     <div class="mb-2">
       <nav class="p-2 bg-white w-full flex-none flex flex-row items-center rounded-sm">
         <div class="pe-1 grow">
-          <img class="h-7" src="/assets/base-icon.svg" alt="Nautilus" />
+          <img class="h-7" src="./assets/base-icon.svg" alt="Nautilus" />
         </div>
         <div class="px-1">
           <label for="file-import" class="flex bg-slate-200 py-1 px-2 rounded-sm cursor-pointer">
