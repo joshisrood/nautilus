@@ -1,14 +1,20 @@
-import { parseSpec, type Spec, type SpecNode } from "@uwdata/mosaic-spec";
-import { parse, stringify } from "yaml";
+import { parseSpec, type Spec as MosaicSpec, type SpecNode as MosaicASTNode } from "@uwdata/mosaic-spec";
+import { parseDocument, stringify, LineCounter, type Document, type ParsedNode as YamlASTNode } from "yaml";
 import { debounce } from "./utils/debounce";
+import { NautilusASTNode } from "./ast/NautilusASTNode";
 
 export class SpecManager {
 
+    lineCounter: LineCounter = new LineCounter();
+
     yamlSpec: string = $state("");
     loadedYaml: string = $state("");
-    specJSON: Spec | null = $derived(parse(this.yamlSpec));
 
-    specAST: SpecNode | null = $state(null);
+    yamlAST: Document = $derived(parseDocument(this.yamlSpec, {lineCounter: this.lineCounter }));
+    specJSON: MosaicSpec | null = $derived(this.yamlAST.toJSON());
+    mosaicSpecNode: MosaicASTNode | null =  $state(null);
+
+    specAST: NautilusASTNode | null = $state(null);
 
     debouncingSpecUpdate: boolean = $state(false);
 
@@ -38,7 +44,7 @@ export class SpecManager {
     updateYaml(updatedSpec: string) {
         this.yamlSpec = updatedSpec;
         if(this.specJSON) {
-            this.specAST = this.parseMosaicSpec(this.specJSON);
+            this.specAST = this.parseNautilusSpec(this.specJSON, this.yamlAST);
         }
     }
 
@@ -53,11 +59,13 @@ export class SpecManager {
         return stringify(this.exportNormalizedJson());
     }
 
-    exportNormalizedJson(): Spec | null {
-        return this.specAST?.toJSON();
+    exportNormalizedJson(): MosaicSpec | null {
+        return this.specAST?.mosaicNode.toJSON();
     }
 
-    private parseMosaicSpec(mosaicSpec: Spec): SpecNode {
-        return parseSpec(mosaicSpec);
+    private parseNautilusSpec(mosaicSpec: MosaicSpec, yamlDocument?: Document): NautilusASTNode {
+        const mosaicNode: MosaicASTNode = parseSpec(mosaicSpec);
+        this.mosaicSpecNode = mosaicNode;
+        return new NautilusASTNode(mosaicNode, yamlDocument?.contents as YamlASTNode)
     }
 }

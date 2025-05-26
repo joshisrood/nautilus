@@ -1,5 +1,5 @@
-import { ASTNode as MosaicASTNode } from "@uwdata/mosaic-spec";
-import { isCollection, isMap, isScalar, isSeq, type ParsedNode as YamlASTNode} from "yaml";
+import { ASTNode as MosaicASTNode, PLOT } from "@uwdata/mosaic-spec";
+import { isMap, isSeq, type ParsedNode as YamlASTNode} from "yaml";
 
 export class NautilusASTNode {
      public type:string;
@@ -13,17 +13,21 @@ export class NautilusASTNode {
           this.mosaicNode = mosaicASTNode;
 
           if(this.mosaicNode.children) {
-               this.children = this.mosaicNode.children.map<NautilusASTNode>((mn, index) => {
+               this.children = this.mosaicNode.children.map<NautilusASTNode>((mNode, index) => {
                     if(isSeq(yamlASTNode) && index < yamlASTNode.items.length) {
                          const childYamlNode = yamlASTNode.get(index);
-                         return new NautilusASTNode(mn, childYamlNode ?? null);
+                         if(isMap(childYamlNode)) {
+                              const valueYamlNode = childYamlNode.get(mNode.type);
+                              return new NautilusASTNode(mNode, valueYamlNode ?? null);
+                         }
+                         return new NautilusASTNode(mNode, childYamlNode ?? null);
                     }
                     else if(isMap(yamlASTNode)) {
-                         const childYamlNode = yamlASTNode.get(mn.type);
-                         return new NautilusASTNode(mn, childYamlNode ?? null)
+                         const childYamlNode = yamlASTNode.get(mNode.type);
+                         return new NautilusASTNode(mNode, childYamlNode ?? null)
                     }
 
-                    return new NautilusASTNode(mn);
+                    return new NautilusASTNode(mNode);
                });
           }
      }

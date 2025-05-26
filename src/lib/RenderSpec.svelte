@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { parseSpec, astToDOM, SpecNode } from '@uwdata/mosaic-spec';
+    import { parseSpec, astToDOM, SpecNode as MosicSpec} from '@uwdata/mosaic-spec';
     import { type Spec, DataNode, FileDataNode } from '@uwdata/mosaic-spec';
     import { onMount } from 'svelte';
     import { parse } from 'yaml';
@@ -16,7 +16,7 @@
     let renderedHtml: HTMLElement | SVGSVGElement | undefined = $state();
     let vgContainer: HTMLElement;
 
-    async function renderComponent(targetContainer: HTMLElement, ast: SpecNode) {
+    async function renderComponent(targetContainer: HTMLElement, ast: MosicSpec) {
         const domPromise = await astToDOM(ast, { api: context });
         renderedHtml = domPromise.element;
         targetContainer.innerHTML = "";
@@ -25,8 +25,8 @@
 
     onMount(() => {
         $effect(() => {
-            if(specManager.specAST) {
-                renderComponent(vgContainer, specManager.specAST);
+            if(specManager.mosaicSpecNode) {
+                renderComponent(vgContainer, specManager.mosaicSpecNode);
             }
         });
         mounted = true;
