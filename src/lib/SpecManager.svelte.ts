@@ -18,6 +18,8 @@ export class SpecManager {
 
     debouncingSpecUpdate: boolean = $state(false);
 
+    mosaicParseError: unknown = null; 
+
     debouncingUpdateYaml: (updatedSpec: string) => void;
 
     constructor(
@@ -44,7 +46,7 @@ export class SpecManager {
     updateYaml(updatedSpec: string) {
         this.yamlSpec = updatedSpec;
         if(this.specJSON) {
-            this.specAST = this.parseNautilusSpec(this.specJSON, this.yamlAST);
+            this.specAST = this.parseNautilusSpec(this.specJSON, this.yamlAST) ?? null;
         }
     }
 
@@ -63,9 +65,16 @@ export class SpecManager {
         return this.specAST?.mosaicNode.toJSON();
     }
 
-    private parseNautilusSpec(mosaicSpec: MosaicSpec, yamlDocument?: Document): NautilusASTNode {
-        const mosaicNode: MosaicASTNode = parseSpec(mosaicSpec);
-        this.mosaicSpecNode = mosaicNode;
-        return new NautilusASTNode(mosaicNode, yamlDocument?.contents as YamlASTNode)
+    private parseNautilusSpec(mosaicSpec: MosaicSpec, yamlDocument?: Document): NautilusASTNode | undefined {
+        this.mosaicParseError = null;
+        try {
+            const mosaicNode: MosaicASTNode = parseSpec(mosaicSpec);
+            this.mosaicSpecNode = mosaicNode;
+            return new NautilusASTNode(mosaicNode, yamlDocument?.contents as YamlASTNode)
+        }
+        catch(error) {
+            this.mosaicParseError = error;
+        }
+        
     }
 }
