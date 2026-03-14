@@ -55,8 +55,8 @@ importers:
         specifier: ^0.12.2
         version: 0.12.2
       '@uwdata/vgplot':
-        specifier: ^0.12.2
-        version: 0.12.2
+        specifier: ^0.21.1
+        version: 0.21.1
       svelte:
         specifier: ^5.22.6
         version: 5.22.6
@@ -102,6 +102,9 @@ packages:
 
   '@duckdb/duckdb-wasm@1.29.0':
     resolution: {integrity: sha512-8Zq7vafQuIz9gklC/9375KE38UlkaS2n8+yvG+/JK7irm3DjwYNJHL4xfplIj0bSHFIg6we5XhWYFqtE/vO3+Q==}
+
+  '@duckdb/duckdb-wasm@1.30.0':
+    resolution: {integrity: sha512-9aWrm+4ayl4sTlvGtl/b+LxrUyXaac3yyVqkoJ3F7Vkd62PoS8PcQIRJ/KjXBW36LP1CnPY5jjvFyIcTFLtcXA==}
 
   '@esbuild/aix-ppc64@0.25.0':
     resolution: {integrity: sha512-O7vun9Sf8DFjH2UtqK8Ku3LkquL9SZL8OLY1T5NZkA34+wG3OQF7cl4Ql8vdNzM6fzBbYfLaiRLIOZ+2FOCgBQ==}
@@ -611,17 +614,29 @@ packages:
   '@uwdata/flechette@2.0.0':
     resolution: {integrity: sha512-4E5mQLNV2VcrHrDS77w4e3luusYGk/jchJSWgonGGUKJ2eNf1yt1qNCy+wzB7SqZ4WOPaK6j1mtzRFtRPzA8Xg==}
 
+  '@uwdata/flechette@2.3.0':
+    resolution: {integrity: sha512-FdTqVEJZL4MwTv+vY1jOUMW2i5pr/G5S4BGdmQ/7wSOCtA0I74UP117kzXiKe1FrB5+ydM4tFxrCdF8Dq9WgNA==}
+
   '@uwdata/mosaic-core@0.12.2':
     resolution: {integrity: sha512-O8Ju7EQE9fGZqrhMP+5U0gyyCtXklkpG9GahGuhiXnHuNtoO2vzIMIs/78LB9SjULVQ1zsww4ov5PbUnlEMmIg==}
 
   '@uwdata/mosaic-core@0.13.0':
     resolution: {integrity: sha512-/S6cjUrwIGMVUEDhEEtkFI6qPSb14J4YDPA3kCmM1/8LaE7tv5HegW2/EwRSsRwq3ayEL1bY3vPAnh/Z3F1dNw==}
 
+  '@uwdata/mosaic-core@0.21.1':
+    resolution: {integrity: sha512-nRh93+A7U/06x/6boSLUUaSCo4pkNAjOgV8P2Zl6ZZeF5pWynLcSqT30WLQPx+VewTvFgJGCymocymdbirFxYw==}
+
   '@uwdata/mosaic-inputs@0.12.2':
     resolution: {integrity: sha512-+zhkldLn+Qa7CYs9R/ig/MHy72hgheRsKQPPwv/dZUb7JwaTBosuSbuCFfynEkJVXpSpbEiNpoU3oz9aciHs3w==}
 
+  '@uwdata/mosaic-inputs@0.21.1':
+    resolution: {integrity: sha512-9h/PFk71QL5+Nhqsai9pqVdnHUQb8OAemZrPossbfvb3q62o7RpU+jMwxcAId4uB/qRTAFxr0LgRfoPxrjfZYg==}
+
   '@uwdata/mosaic-plot@0.12.2':
     resolution: {integrity: sha512-uYV/OqN/VVyH/RKzTxK1jl1TxprmUhMuyWYN2ySd6/W7609e11CR4+v4hwsXXKn8T39/sFSrYQiu0qfz4V8gMw==}
+
+  '@uwdata/mosaic-plot@0.21.1':
+    resolution: {integrity: sha512-ZPBD0Km44VIexZ7l88n1yWh8QpVJakJnmkyq6zr8aujw2i2+MkrcI8Abc2aPJ74o2YiSb9hMKxno83nB/Mfy7A==}
 
   '@uwdata/mosaic-spec@0.12.2':
     resolution: {integrity: sha512-kzs7+Wu2ilkYWcb7f0lsYVgyFHdbpP8MrQobreRQyT+Q9X0l6c5vJwaJxH5HHxcWRPHdg01CanSEahbBTpo7Bg==}
@@ -632,8 +647,14 @@ packages:
   '@uwdata/mosaic-sql@0.13.0':
     resolution: {integrity: sha512-4DIZDy6Xzji8Q4/hUkHe3DVCG6mFcBR5PYrm4ICv0fw1skllzVAolMR8NZaJK3PgNS78XhptmerD0j6mqnBPyA==}
 
+  '@uwdata/mosaic-sql@0.21.1':
+    resolution: {integrity: sha512-2B4Dle4odyxIaBaDVRfQchebH/CUZvUV8kIwKF3V2GksQoF8KYY/Q6zTLTJhYrDEdUkt8M0OIy4U/Ntw93CV1A==}
+
   '@uwdata/vgplot@0.12.2':
     resolution: {integrity: sha512-ADt9t8apullBEZ0ItMqy6/u0c7CVzdfWaK8cY+sPeoUxBdaj+ymIc40nXfCjbxkYMjcXOlS7gPnFOLlBJv0iAA==}
+
+  '@uwdata/vgplot@0.21.1':
+    resolution: {integrity: sha512-R+CFYeTPdNoMzMAxNwt7coTqcWWY6aOKUj28SqkQ4dbL3Ig37RjCnRDcpFzCqvxaSeOwZRXQ1Ld3WhnagqDh/Q==}
 
   acorn@8.14.1:
     resolution: {integrity: sha512-OvQ/2pUDKmgfCg++xsTX1wGxfTaszcHVcTctW4UJB4hibJx2HXxxO5UmVgyjMa+ZDsiaf5wWLXYpRWMmBI0QHg==}
@@ -785,8 +806,8 @@ packages:
     resolution: {integrity: sha512-zxV/SsA+U4yte8051P4ECydjD/S+qeYtnaIyAs9tgHCqfguma/aAQDjo85A9Z6EKhBirHRJHXIgJUlffT4wdLg==}
     engines: {node: '>=12'}
 
-  d3-format@3.1.0:
-    resolution: {integrity: sha512-YyUI6AEuY/Wpt8KWLgZHsIU86atmikuoOmCfommt0LYHiQSPjvX2AcFc38PX0CBpr2RCyZhjex+NS/LPOv6YqA==}
+  d3-format@3.1.2:
+    resolution: {integrity: sha512-AJDdYOdnyRDV5b6ArilzCPPwc1ejkHcoyFarqlPqT7zRYjhavcT3uSrqcMvsgh2CgoPbK3RCwyHaVyxYcP2Arg==}
     engines: {node: '>=12'}
 
   d3-geo@3.1.1:
@@ -932,6 +953,7 @@ packages:
 
   glob@10.4.5:
     resolution: {integrity: sha512-7Bv8RF0k6xjo7d4A/PxYLbUCfb6c+Vpd2/mB2yRDlew7Jb5hEXiCD9ibfO7wpk8i4sevK6DFny9h7EYbM3/sHg==}
+    deprecated: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
     hasBin: true
 
   graceful-fs@4.2.11:
@@ -1363,6 +1385,10 @@ snapshots:
     dependencies:
       apache-arrow: 17.0.0
 
+  '@duckdb/duckdb-wasm@1.30.0':
+    dependencies:
+      apache-arrow: 17.0.0
+
   '@esbuild/aix-ppc64@0.25.0':
     optional: true
 
@@ -1733,6 +1759,8 @@ snapshots:
 
   '@uwdata/flechette@2.0.0': {}
 
+  '@uwdata/flechette@2.3.0': {}
+
   '@uwdata/mosaic-core@0.12.2':
     dependencies:
       '@duckdb/duckdb-wasm': 1.29.0
@@ -1745,11 +1773,22 @@ snapshots:
       '@uwdata/flechette': 2.0.0
       '@uwdata/mosaic-sql': 0.13.0
 
+  '@uwdata/mosaic-core@0.21.1':
+    dependencies:
+      '@duckdb/duckdb-wasm': 1.30.0
+      '@uwdata/flechette': 2.3.0
+      '@uwdata/mosaic-sql': 0.21.1
+
   '@uwdata/mosaic-inputs@0.12.2':
     dependencies:
       '@uwdata/mosaic-core': 0.12.2
       '@uwdata/mosaic-sql': 0.12.2
       isoformat: 0.2.1
+
+  '@uwdata/mosaic-inputs@0.21.1':
+    dependencies:
+      '@uwdata/mosaic-core': 0.21.1
+      '@uwdata/mosaic-sql': 0.21.1
 
   '@uwdata/mosaic-plot@0.12.2':
     dependencies:
@@ -1758,6 +1797,13 @@ snapshots:
       '@uwdata/mosaic-sql': 0.12.2
       d3: 7.9.0
       isoformat: 0.2.1
+
+  '@uwdata/mosaic-plot@0.21.1':
+    dependencies:
+      '@observablehq/plot': 0.6.17
+      '@uwdata/mosaic-core': 0.21.1
+      '@uwdata/mosaic-sql': 0.21.1
+      d3: 7.9.0
 
   '@uwdata/mosaic-spec@0.12.2':
     dependencies:
@@ -1770,12 +1816,21 @@ snapshots:
 
   '@uwdata/mosaic-sql@0.13.0': {}
 
+  '@uwdata/mosaic-sql@0.21.1': {}
+
   '@uwdata/vgplot@0.12.2':
     dependencies:
       '@uwdata/mosaic-core': 0.12.2
       '@uwdata/mosaic-inputs': 0.12.2
       '@uwdata/mosaic-plot': 0.12.2
       '@uwdata/mosaic-sql': 0.12.2
+
+  '@uwdata/vgplot@0.21.1':
+    dependencies:
+      '@uwdata/mosaic-core': 0.21.1
+      '@uwdata/mosaic-inputs': 0.21.1
+      '@uwdata/mosaic-plot': 0.21.1
+      '@uwdata/mosaic-sql': 0.21.1
 
   acorn@8.14.1: {}
 
@@ -1917,7 +1972,7 @@ snapshots:
       d3-quadtree: 3.0.1
       d3-timer: 3.0.1
 
-  d3-format@3.1.0: {}
+  d3-format@3.1.2: {}
 
   d3-geo@3.1.1:
     dependencies:
@@ -1945,7 +2000,7 @@ snapshots:
   d3-scale@4.0.2:
     dependencies:
       d3-array: 3.2.4
-      d3-format: 3.1.0
+      d3-format: 3.1.2
       d3-interpolate: 3.0.1
       d3-time: 3.1.0
       d3-time-format: 4.1.0
@@ -1998,7 +2053,7 @@ snapshots:
       d3-ease: 3.0.1
       d3-fetch: 3.0.1
       d3-force: 3.0.0
-      d3-format: 3.1.0
+      d3-format: 3.1.2
       d3-geo: 3.1.1
       d3-hierarchy: 3.1.2
       d3-interpolate: 3.0.1
