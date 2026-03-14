@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@tauri-apps/api':
         specifier: ^2.3.0
-        version: 2.3.0
+        version: 2.10.1
       '@tauri-apps/plugin-opener':
         specifier: ^2.2.6
         version: 2.2.6
@@ -516,8 +516,8 @@ packages:
     peerDependencies:
       vite: ^5.2.0 || ^6
 
-  '@tauri-apps/api@2.3.0':
-    resolution: {integrity: sha512-33Z+0lX2wgZbx1SPFfqvzI6su63hCBkbzv+5NexeYjIx7WA9htdOKoRR7Dh3dJyltqS5/J8vQFyybiRoaL0hlA==}
+  '@tauri-apps/api@2.10.1':
+    resolution: {integrity: sha512-hKL/jWf293UDSUN09rR69hrToyIXBb8CjGaWC7gfinvnQrBVvnLr08FeFi38gxtugAVyVcTa5/FD/Xnkb1siBw==}
 
   '@tauri-apps/cli-darwin-arm64@2.3.1':
     resolution: {integrity: sha512-TOhSdsXYt+f+asRU+Dl+Wufglj/7+CX9h8RO4hl5k7D6lR4L8yTtdhpS7btaclOMmjYC4piNfJE70GoxhOoYWw==}
@@ -932,6 +932,7 @@ packages:
 
   glob@10.4.5:
     resolution: {integrity: sha512-7Bv8RF0k6xjo7d4A/PxYLbUCfb6c+Vpd2/mB2yRDlew7Jb5hEXiCD9ibfO7wpk8i4sevK6DFny9h7EYbM3/sHg==}
+    deprecated: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
     hasBin: true
 
   graceful-fs@4.2.11:
@@ -1666,7 +1667,7 @@ snapshots:
       tailwindcss: 4.0.12
       vite: 6.2.1(@types/node@20.17.24)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.0)
 
-  '@tauri-apps/api@2.3.0': {}
+  '@tauri-apps/api@2.10.1': {}
 
   '@tauri-apps/cli-darwin-arm64@2.3.1':
     optional: true
@@ -1713,7 +1714,7 @@ snapshots:
 
   '@tauri-apps/plugin-opener@2.2.6':
     dependencies:
-      '@tauri-apps/api': 2.3.0
+      '@tauri-apps/api': 2.10.1
 
   '@types/command-line-args@5.2.3': {}
 
