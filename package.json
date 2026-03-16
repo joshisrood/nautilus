@@ -29,7 +29,7 @@
     "@tailwindcss/vite": "^4.0.12",
     "@tauri-apps/cli": "^2.3.1",
     "@uwdata/mosaic-core": "^0.13.0",
-    "@uwdata/mosaic-spec": "^0.12.2",
+    "@uwdata/mosaic-spec": "^0.21.1",
     "@uwdata/vgplot": "^0.21.1",
     "svelte": "^5.22.6",
     "svelte-check": "^4.1.5",
