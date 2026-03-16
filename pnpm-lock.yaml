@@ -65,7 +65,7 @@ importers:
         version: 4.1.5(svelte@5.22.6)(typescript@5.6.3)
       tailwindcss:
         specifier: ^4.0.12
-        version: 4.0.12
+        version: 4.2.1
       typescript:
         specifier: ~5.6.3
         version: 5.6.3
@@ -1275,9 +1275,6 @@ packages:
   table-layout@4.1.1:
     resolution: {integrity: sha512-iK5/YhZxq5GO5z8wb0bY1317uDF3Zjpha0QFFLA8/trAoiLbQD0HUbMesEaxyzUgDxi2QlcbM8IvqOlEjgoXBA==}
     engines: {node: '>=12.17'}
-
-  tailwindcss@4.0.12:
-    resolution: {integrity: sha512-bT0hJo91FtncsAMSsMzUkoo/iEU0Xs5xgFgVC9XmdM9bw5MhZuQFjPNl6wxAE0SiQF/YTZJa+PndGWYSDtuxAg==}
 
   tailwindcss@4.2.1:
     resolution: {integrity: sha512-/tBrSQ36vCleJkAOsy9kbNTgaxvGbyOamC30PRePTQe/o1MFwEKHQk4Cn7BNGaPtjp+PuUrByJehM1hgxfq4sw==}
@@ -2503,8 +2500,6 @@ snapshots:
     dependencies:
       array-back: 6.2.2
       wordwrapjs: 5.1.0
-
-  tailwindcss@4.0.12: {}
 
   tailwindcss@4.2.1: {}
 
